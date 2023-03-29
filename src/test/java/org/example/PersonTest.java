@@ -19,7 +19,8 @@ class PersonTest {
         Person amalia = new Person("Amalia", "Oranje", "female", 18);
         Person alexia = new Person("Alexia", "Oranje", "female", 16);
         // add parents to child
-        amalia.addParents(alex, maxima);
+        alex.addPartner(maxima);
+        amalia.addParents(alex, maxima); // fout1
         alexia.addParents(alex, maxima);
 
 
@@ -43,9 +44,12 @@ class PersonTest {
 
     @Test
     void checkAddChild() {
+        Person alex = new Person("Alex", "Oranje", "male", 55 );
         Person maxima = new Person("Maxima", "Oranje", "female", 51 );
         Person amalia = new Person("Amalia", "Oranje", "female", 18);
         Person alexia = new Person("Alexia", "Oranje", "female", 16);
+
+        maxima.addPartner(alex);
         // add two children to mother
         maxima.addChild(amalia);
         maxima.addChild(alexia);
@@ -114,6 +118,10 @@ class PersonTest {
         Person alex = new Person("Alex", "Oranje", "male", 55 );
         Person amalia = new Person("Amalia", "Oranje", "female", 18);
         Person alexia = new Person("Alexia", "Oranje", "female", 16);
+        Person maxima = new Person("Maxima", "Oranje", "female", 51 );
+
+        // add parents to child
+        alex.addPartner(maxima);
 
         beatrix.addChild(alex);
         alex.addChild(amalia);
@@ -130,14 +138,18 @@ class PersonTest {
     @Test
     void checkGetPetsOfGrandchildren() {
         Person beatrix = new Person("Beatrix", "Oranje", "female", 80);
+        Person clausSR = new Person("Claus Senior", "Amsberg", "male", 90);
         Person alex = new Person("Alex", "Oranje", "male", 55 );
+        Person maxima = new Person("Maxima", "Oranje", "female", 51 );
         Person amalia = new Person("Amalia", "Oranje", "female", 18);
         Person alexia = new Person("Alexia", "Oranje", "female", 16);
         Pet bella = new Pet("Bella", 7, "dog");
         Pet simba = new Pet("Simba", 5, "cat");
 
         beatrix.addChild(alex);
-        alex.addChild(amalia);
+        beatrix.addPartner(clausSR);
+        alex.addPartner(maxima);
+        alex.addChild(amalia);  // fout
         alex.addChild(alexia);
         amalia.addPet(bella);
         alexia.addPet(simba);
@@ -161,6 +173,9 @@ class PersonTest {
         Person alexia = new Person("Alexia", "Oranje", "female", 16);
         Person eloise = new Person("Eloise", "Oranje", "female", 20);
         Person claus = new Person("Claus", "Oranje", "male", 18);
+
+        alex.addPartner(maxima);
+        constantijn.addPartner(laurentien);
 
         constantijn.addSibling(alex);
         amalia.addParents(alex, maxima);

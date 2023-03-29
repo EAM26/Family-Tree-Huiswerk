@@ -48,9 +48,10 @@ public class Person {
     }
 
     public void addChild(Person person) {
+
         // if children is empty, make person to list children
         if (this.getChildren() == null) {
-            this.setChildren(Arrays.asList(person));
+            this.setChildren(Arrays.asList(person));  // Fout Arrays.assList methode
         } else {
             // fill new list with children old list and add new child
             if (!this.getChildren().contains(person)) {
