@@ -15,6 +15,7 @@ public class Person {
     private List<Person> siblings;
     private List<Person> children;
     private List<Pet> pets;
+    private Person partner;
 
     public Person(String name, String lastName, String sex, int age) {
         this.name = name;
@@ -44,10 +45,10 @@ public class Person {
             p1.addChild(this);
             p2.addChild(this);
         }
-
     }
 
     public void addChild(Person person) {
+
         // if children is empty, make person to list children
         if (this.getChildren() == null) {
             this.setChildren(Arrays.asList(person));
@@ -60,13 +61,16 @@ public class Person {
                 }
                 updateChildren.add(person);
                 this.setChildren(updateChildren);
+                this.getPartner().setChildren(updateChildren); // Bonus 3
             }
         }
         // if child has no father or mother, set father or mother
         if(person.getFather() == null && this.sex.equals("male")) {
             person.setFather(this);
+            person.setMother(this.getPartner()); // Bonus 3
         } else if(person.getMother() == null && this.sex.equals("female")) {
             person.setMother(this);
+            person.setFather((this.getPartner())); // Bonus 3
         }
     }
 
@@ -121,6 +125,7 @@ public class Person {
         return grandChildren;
     }
 
+    // Bonus 1
     public List<Pet> getPetsOfGrandchildren() {
         List<Person> grandchildren = this.getGrandChildren();
         List<Pet> allPets = new ArrayList<>();
@@ -130,21 +135,19 @@ public class Person {
         return allPets;
     }
 
+    // Bonus 2
     public List<Person> getAllNieces() {
         List<Person> auntsAndUncles = new ArrayList<>();
         List<Person>niecesAndNewphes = new ArrayList<>();
         List<Person> nieces = new ArrayList<>();
+
         // get parents
         if(this.getFather()!= null && this.getMother()!= null) {
-            System.out.println("test for mother and father"); // test father mother
             List<Person> parents = Arrays.asList(this.getMother(), this.getFather());
-            System.out.println("size of parents list: " + parents.size()); // test parents size
 
             // get siblings parents
             for (Person parent: parents) {
-                System.out.println(parent.getName());
                 if(parent.getSiblings()!=null) {
-                    System.out.println("test siblings");
                     auntsAndUncles.addAll(parent.getSiblings());
                 } else{
                     continue;
@@ -166,6 +169,25 @@ public class Person {
             }
         }
         return nieces;
+    }
+
+
+    // Bonus 3
+    public void addPartner(Person person) {
+        this.setPartner(person);
+        person.setPartner(this);
+    }
+
+    public void addParents(Person person) {
+        this.addParents(person, person.getPartner());
+    }
+
+    public Person getPartner() {
+        return partner;
+    }
+
+    public void setPartner(Person partner) {
+        this.partner = partner;
     }
 
     public void setName(String name) {
