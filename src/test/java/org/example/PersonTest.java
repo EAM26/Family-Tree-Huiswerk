@@ -126,6 +126,7 @@ class PersonTest {
         assertEquals(alexia, output2);
     }
 
+    // Bonus 1
     @Test
     void checkGetPetsOfGrandchildren() {
         Person beatrix = new Person("Beatrix", "Oranje", "female", 80);
@@ -148,6 +149,7 @@ class PersonTest {
         assertEquals(simba, output2);
     }
 
+    // Bonus 2
     @Test
     void checkForNieces() {
 
@@ -180,4 +182,36 @@ class PersonTest {
         assertEquals(alexia, output5);
 
     }
+
+    // Bonus 3
+    @Test
+    void checkAddPartner() {
+        Person alex = new Person("Alex", "Oranje", "male", 55 );
+        Person maxima = new Person("Maxima", "Oranje", "female", 51 );
+        Person amalia = new Person("Amalia", "Oranje", "female", 18);
+        Person alexia = new Person("Alexia", "Oranje", "female", 16);
+
+        alex.addPartner(maxima);
+        amalia.addParents(alex);
+
+        alex.addChild(alexia);
+
+
+        Person output1 = alex.getPartner();
+        Person output2 = maxima.getPartner();
+        Person output3 = amalia.getMother();
+        Person output4 = maxima.getChildren().get(1);
+
+        // check partner
+        assertEquals(maxima, output1);
+        assertEquals(alex, output2);
+
+        // check if partner has child with addParents method
+        assertEquals(maxima, output3);
+
+        // check if partner has child with addChild method
+        assertEquals(alexia, output4);
+
+    }
+
 }

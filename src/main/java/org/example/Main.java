@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-
         Person alex = new Person("Alex", "Oranje", "male", 55 );
+        Person maxima = new Person("Maxima", "Oranje", "female", 51 );
         Person constantijn = new Person("Constantijn", "Oranje", "male", 52);
         Person laurentien = new Person("Laurentien", "Oranje", "female", 50);
         Person amalia = new Person("Amalia", "Oranje", "female", 18);
@@ -14,14 +14,20 @@ public class Main {
         Person claus = new Person("Claus", "Oranje", "male", 18);
 
         constantijn.addSibling(alex);
-        alex.addChild(amalia);
-        alex.addChild(alexia);
-        constantijn.addChild(eloise);
-        laurentien.addChild(eloise);
-        constantijn.addChild(claus);
+        amalia.addParents(alex, maxima);
+        alexia.addParents(alex, maxima);
+        eloise.addParents(constantijn, laurentien);
+        claus.addParents(constantijn, laurentien);
+
 
         Person output1 = eloise.getAllNieces().get(0);
         Person output2 = eloise.getAllNieces().get(1);
+        Person output3 = alexia.getAllNieces().get(0);
+        Person output4 = claus.getAllNieces().get(0);
+        Person output5 = claus.getAllNieces().get(1);
+
+
+
 
 
 
