@@ -20,7 +20,7 @@ class PersonTest {
         Person alexia = new Person("Alexia", "Oranje", "female", 16);
         // add parents to child
         alex.addPartner(maxima);
-        amalia.addParents(alex, maxima); // fout1
+        amalia.addParents(alex, maxima);
         alexia.addParents(alex, maxima);
 
 
@@ -149,7 +149,7 @@ class PersonTest {
         beatrix.addChild(alex);
         beatrix.addPartner(clausSR);
         alex.addPartner(maxima);
-        alex.addChild(amalia);  // fout
+        alex.addChild(amalia);
         alex.addChild(alexia);
         amalia.addPet(bella);
         alexia.addPet(simba);

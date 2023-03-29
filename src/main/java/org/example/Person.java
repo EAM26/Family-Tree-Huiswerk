@@ -51,7 +51,7 @@ public class Person {
 
         // if children is empty, make person to list children
         if (this.getChildren() == null) {
-            this.setChildren(Arrays.asList(person));  // Fout Arrays.assList methode
+            this.setChildren(Arrays.asList(person));
         } else {
             // fill new list with children old list and add new child
             if (!this.getChildren().contains(person)) {
